@@ -186,13 +186,13 @@ title = f"Capital Gain Tax For Property (Indexation vs NonIndexation)<span style
 fig.update_layout(
     title={
         'text': title,
-        'y': 1.2,
+        'y': 0.9,
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top',
         'font': dict(
             family="Arial",
-            size=30,  # Double the default size which is generally around 20
+            size=25,  # Double the default size which is generally around 20
             color="black"
         )
     },
