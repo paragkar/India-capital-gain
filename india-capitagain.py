@@ -61,6 +61,7 @@ def loadcgmap():
 	return df
 
 
+#main grogram begins
 df = loadcgmap()
 
 # Get unique years from the 'Property Purchase FY' column
@@ -69,18 +70,12 @@ years = df['Property Purchase FY'].unique()
 # Create a dropdown menu
 selected_year = st.sidebar.selectbox('Select a Year of Purchase:', years)
 
-# Display the selected year (you can replace this with other functionality based on the selection)
-st.write(f'You selected: {selected_year}')
-
 # Create a numeric input for purchase price
 purchase_price = st.sidebar.number_input('Enter Purchase Price in Rs Lakhs:', 
                                  min_value=0.0, 
                                  value=0.0, 
                                  step=1.0, 
                                  format="%.2f")
-
-# Display the entered purchase price
-st.write(f'Purchase Price: Rs {purchase_price} Lakhs')
 
 # Get the applicable cost index for the selected year
 cost_index = df[df["Property Purchase FY"] == selected_year]["Applicable Cost Index"].iloc[0].round(2)
@@ -129,6 +124,15 @@ fig.update_layout(height=700, width=1200, margin=dict(l=0, r=10, t=10, b=0, pad=
 
 # Display the plot
 st.plotly_chart(fig)
+
+# Display the selected year (you can replace this with other functionality based on the selection)
+st.write(f'You selected: {selected_year}')
+
+# Display the entered purchase price
+st.write(f'Purchase Price: Rs {purchase_price} Lakhs')
+
+# Display the entered selling price
+st.write(f'Selling Price: Rs {selling_price} Lakhs')
 
 # Display taxes payable
 st.write(f'Tax Payable with Indexation: Rs {round(cgtax_with_indexation[-1],2)} Lakhs')
