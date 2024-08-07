@@ -191,21 +191,21 @@ title_text = f"Capital Gain Tax Analysis for Property (Indexation vs Non-Indexat
 
 
 # Use additional CSS to ensure the title is positioned correctly and reduced in size
-	title_css = """
-	<style>
-		h1 {
-			text-align: center; /* Center align the title */
-			margin-top: -20px !important; /* Adjust top margin to reduce gap */
-			margin-bottom: 5px; /* Add a bit of margin below the title if needed */
-			border-bottom: none !important; /* Ensures no line is under the title */
-			font-size: 26px; /* Adjust font size to 80% of the original */
-		}
-	</style>
-	"""
+title_css = """
+<style>
+	h1 {
+		text-align: center; /* Center align the title */
+		margin-top: -20px !important; /* Adjust top margin to reduce gap */
+		margin-bottom: 5px; /* Add a bit of margin below the title if needed */
+		border-bottom: none !important; /* Ensures no line is under the title */
+		font-size: 26px; /* Adjust font size to 80% of the original */
+	}
+</style>
+"""
 
-	# Display the title with custom styling
-	st.markdown(title_css, unsafe_allow_html=True)
-	title_placeholder.markdown(f"<h1>{title_text}</h1>", unsafe_allow_html=True)
+# Display the title with custom styling
+st.markdown(title_css, unsafe_allow_html=True)
+title_placeholder.markdown(f"<h1>{title_text}</h1>", unsafe_allow_html=True)
 
 
 
