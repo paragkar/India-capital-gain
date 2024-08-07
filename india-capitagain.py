@@ -196,7 +196,7 @@ color = color()
 title = f"Capital Gain Tax For Property (Indexation vs NonIndexation)<span style='color:violet;'> - Purchase Year {selected_year}\
 </span> - Purchase Price <span style='color:violet;'> Rs {purchase_price} Lakhs</span>\
 </span> - Selling Price <span style='color:violet;'> Rs {selling_price} Lakhs</span>\
-</span> - Savings with Indexation <span style='color:color;'> Rs {tax_gain_with_indexation} Lakhs</span>"
+</span> - Savings with Indexation <span style='color:{color};'> Rs {tax_gain_with_indexation} Lakhs</span>"
 
 
 # # Title with HTML for automatic line breaks
