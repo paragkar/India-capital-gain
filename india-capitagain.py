@@ -123,7 +123,7 @@ fig.add_trace(go.Scatter(x=selling_prices, y=tax_gains_with_indexation, mode='li
 fig.add_vline(x=intersection_selling_price, line_width=2, line_dash="dash", line_color="black")
 
 # Add a horizontal line at the x axis
-fig.add_vline(y=0.0, line_width=2, line_dash="dash", line_color="black")
+fig.add_hline(y=0.0, line_width=2, line_dash="dash", line_color="black")
 
 
 # Set plot layout
