@@ -147,10 +147,10 @@ fig.add_trace(go.Scatter(
 ))
 fig.add_trace(go.Scatter(
     x=selling_prices, y=cgtax_without_indexation, mode='lines+markers+text', name='Capital Gain Tax Without Indexation',
-    line=dict(color='red'),
+    line=dict(color='brown'),
     text=[f"{y:.1f} L" if x in [selling_prices[0], selling_prices[-1], intersection_selling_price] else "" for x, y in zip(selling_prices, cgtax_without_indexation)],
     textposition=[determine_text_position(x) for x in selling_prices],
-    textfont=dict(size=16, color='red', family='Arial, bold')
+    textfont=dict(size=16, color='brown', family='Arial, bold')
 ))
 fig.add_trace(go.Scatter(
     x=selling_prices, y=tax_gains_with_indexation, mode='lines+markers+text', name='Savings With Indexation',
