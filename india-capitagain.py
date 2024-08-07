@@ -138,21 +138,21 @@ fig.add_trace(go.Scatter(
     line=dict(color='blue'),
     text=[f"{y:.1f} L" if x in [selling_prices[0], selling_prices[-1], intersection_selling_price] else "" for x, y in zip(selling_prices, cgtax_with_indexation)],
     textposition=[determine_text_position(x) for x in selling_prices],
-    textfont=dict(size=20, color='blue', family='Arial, bold')
+    textfont=dict(size=16, color='blue', family='Arial, bold')
 ))
 fig.add_trace(go.Scatter(
     x=selling_prices, y=cgtax_without_indexation, mode='lines+markers+text', name='Capital Gain Tax Without Indexation',
     line=dict(color='red'),
     text=[f"{y:.1f} L" if x in [selling_prices[0], selling_prices[-1], intersection_selling_price] else "" for x, y in zip(selling_prices, cgtax_without_indexation)],
     textposition=[determine_text_position(x) for x in selling_prices],
-    textfont=dict(size=20, color='red', family='Arial, bold')
+    textfont=dict(size=16, color='red', family='Arial, bold')
 ))
 fig.add_trace(go.Scatter(
     x=selling_prices, y=tax_gains_with_indexation, mode='lines+markers+text', name='Savings With Indexation',
     line=dict(color='green'),
     text=[f"{y:.1f} L" if x in [selling_prices[0], selling_prices[-1], intersection_selling_price] else "" for x, y in zip(selling_prices, tax_gains_with_indexation)],
     textposition=[determine_text_position(x) for x in selling_prices],
-    textfont=dict(size=20, color='green', family='Arial, bold')
+    textfont=dict(size=16, color='green', family='Arial, bold')
 ))
 
 
