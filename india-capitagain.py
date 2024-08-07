@@ -71,6 +71,10 @@ def determine_text_position(x_value):
         return "middle right"
 
 
+title_placeholder = st.empty()
+# slider_placeholder = st.sidebar.empty()
+# plot_placeholder = st.empty()
+
 #main grogram begins
 df = loadcgmap()
 
@@ -181,8 +185,28 @@ fig.add_hline(y=0.0, line_width=2, line_dash="dash", line_color="black")
 # </span> - Purchase Price <span style='color:red;'> Rs {purchase_price} Lakhs</span>\
 # </span> - Selling Price <span style='color:red;'> Rs {selling_price} Lakhs</span>"
 
+
 # Title with HTML for automatic line breaks
 title_text = f"Capital Gain Tax Analysis for Property (Indexation vs Non-Indexation) <br>Purchase Year: {selected_year}, Purchase Price: Rs {purchase_price} Lakhs, Selling Price: Rs {selling_price} Lakhs"
+
+
+# Use additional CSS to ensure the title is positioned correctly and reduced in size
+	title_css = """
+	<style>
+		h1 {
+			text-align: center; /* Center align the title */
+			margin-top: -20px !important; /* Adjust top margin to reduce gap */
+			margin-bottom: 5px; /* Add a bit of margin below the title if needed */
+			border-bottom: none !important; /* Ensures no line is under the title */
+			font-size: 26px; /* Adjust font size to 80% of the original */
+		}
+	</style>
+	"""
+
+	# Display the title with custom styling
+	st.markdown(title_css, unsafe_allow_html=True)
+	title_placeholder.markdown(f"<h1>{title_text}</h1>", unsafe_allow_html=True)
+
 
 
 # Update layout for the plot, including custom legend positioning
