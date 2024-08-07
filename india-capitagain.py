@@ -87,7 +87,7 @@ purchase_price = st.sidebar.number_input('Enter Purchase Price in Rs Lakhs:',
 st.write(f'Purchase Price: Rs {purchase_price} Lakhs')
 
 # Get the applicable cost index for the selected year
-cost_index = df[df["Property Purchase FY"] == selected_year]["Applicable Cost Index"].iloc[0]
+cost_index = df[df["Property Purchase FY"] == selected_year]["Applicable Cost Index"].iloc[0].round(2)
 
 st.write(f'Cost Index: {cost_index}')
 
