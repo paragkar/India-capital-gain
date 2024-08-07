@@ -184,7 +184,18 @@ title = f"Capital Gain Tax For Property (Indexation vs NonIndexation)<span style
 
 # Update layout for the plot, including custom legend positioning
 fig.update_layout(
-    title=title,
+    title={
+        'text': title,
+        'y': 0.9,
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top',
+        'font': dict(
+            family="Arial",
+            size=40,  # Double the default size which is generally around 20
+            color="black"
+        )
+    },
     xaxis_title='Selling Price (Rs Lakhs)',
     yaxis_title='Capital Gain Tax (Rs Lakhs)',
     legend_title='Profit Type',
@@ -207,16 +218,4 @@ fig.update_yaxes(tickfont=dict(size=15),fixedrange=True, showline=True, linewidt
 # Display the plot
 st.plotly_chart(fig)
 
-# # Display the selected year (you can replace this with other functionality based on the selection)
-# st.write(f'You selected: {selected_year}')
-
-# # Display the entered purchase price
-# st.write(f'Purchase Price: Rs {purchase_price} Lakhs')
-
-# # Display the entered selling price
-# st.write(f'Selling Price: Rs {selling_price} Lakhs')
-
-# # Display taxes payable
-# st.write(f'Tax Payable with Indexation: Rs {round(cgtax_with_indexation[-1],2)} Lakhs')
-# st.write(f'Tax Payable without Indexation: Rs {round(cgtax_without_indexation[-1],2)} Lakhs')
 
