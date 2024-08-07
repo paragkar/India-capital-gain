@@ -147,6 +147,10 @@ fig.update_layout(
     height=700, width=1200, margin=dict(l=0, r=10, t=30, b=0, pad=0)
 )
 
+ #Update the layout for the combined figure for 1
+fig.update_xaxes(row=1, col=2, fixedrange=True, showline=True, linewidth=1.5, linecolor='grey', mirror=True, showgrid=True, gridcolor='lightgrey')
+fig.update_yaxes(row=1, col=2, tickfont=dict(size=15),fixedrange=True, showline=True, linewidth=1.5, linecolor='grey', mirror=True, showgrid=True, gridcolor='lightgrey')
+
 
 # Display the plot
 st.plotly_chart(fig)
