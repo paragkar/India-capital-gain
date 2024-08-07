@@ -65,7 +65,7 @@ def loadcgmap():
 
 df = loadcgmap()
 
-st.write(df)
+# st.write(df)
 
 # Get unique years from the 'Property Purchase FY' column
 years = df['Property Purchase FY'].unique()
