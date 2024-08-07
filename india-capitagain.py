@@ -206,11 +206,11 @@ fig.update_layout(
     legend=dict(
         orientation="h",
         x=0.5,
-        y=-0.2,
+        y=-0.3,
         xanchor='center',
         yanchor='bottom'
     ),
-    height=700, width=1200, margin=dict(l=0, r=0, t=50, b=0, pad=0)
+    height=700, width=1200, margin=dict(l=0, r=0, t=100, b=0, pad=0)
 )
 
  #Update the layout for the combined figure for 1
