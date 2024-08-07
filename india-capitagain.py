@@ -110,7 +110,7 @@ selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:',
                                  step=selling_price_increment_steps, 
                                  format="%.2f")
 
-tax_gain_with_indexation = round(((selling_price - indexed_puchased_cost)*0.2 - (selling_price - purchase_price)*0.125),2)
+tax_gain_with_indexation = round(((selling_price - purchase_price)*0.125)-(selling_price - indexed_puchased_cost)*0.2,2)
 
 # Generate range of selling prices from the purchase price to the selected selling price
 selling_prices = np.arange(purchase_price, selling_price+1, 1.0)
