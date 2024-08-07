@@ -91,7 +91,7 @@ cost_index = df[df["Property Purchase FY"] == selected_year]["Applicable Cost In
 
 st.write(f'Cost Index: {cost_index}')
 
-indexed_puchased_cost = purchase_price * cost_index
+indexed_puchased_cost = round(purchase_price * cost_index,2)
 
 # Create a numeric input for purchase price
 selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:', 
