@@ -128,7 +128,7 @@ fig.add_hline(y=0.0, line_width=2, line_dash="dash", line_color="black")
 
 title = f"Capital Gain Tax For Property (Indexation vs NonIndexation) - <span style='color:blue;'> Year of Purchase {selected_year}\
 </span> Purchase Price <span style='color:red;'> Rs {purchase_price} Lakhs</span>\
-</span> Selling Price <span style='color:red;'> Rs {selling_prices} Lakhs</span>"
+</span> Selling Price <span style='color:red;'> Rs {selling_price} Lakhs</span>"
 
 
 # Update layout for the plot, including custom legend positioning
