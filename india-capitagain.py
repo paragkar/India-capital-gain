@@ -89,6 +89,8 @@ st.write(f'Purchase Price: Rs {purchase_price} Lakhs')
 idx = df[df["Property Purchase FY"] == selected_year].index
 cost_index = df.loc[idx, "Applicable Cost Index"]
 
+st.write(f'Cost Index: {cost_index}')
+
 indexed_puchased_cost = purchase_price * cost_index
 
 # Create a numeric input for purchase price
