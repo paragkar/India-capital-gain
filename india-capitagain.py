@@ -109,8 +109,8 @@ selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:',
 selling_prices = np.arange(purchase_price, selling_price + 1, 1.0)
 
 # Calculate profits with and without indexation for each selling price
-profits_with_indexation = selling_prices - indexed_puchased_cost
-profits_without_indexation = selling_prices - purchase_price
+profits_with_indexation = (selling_prices - indexed_puchased_cost)*0.2
+profits_without_indexation = (selling_prices - purchase_price)*0.125
 
 # Create a scatter plot
 fig = go.Figure()
