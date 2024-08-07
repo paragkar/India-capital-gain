@@ -123,6 +123,8 @@ tax_gains_with_indexation = cgtax_without_indexation - cgtax_with_indexation
 intersection_idx = np.argmin(np.abs(cgtax_with_indexation - cgtax_without_indexation))
 intersection_selling_price = selling_prices[intersection_idx]
 
+midpoint = selling_prices[len(selling_prices) // 2]
+
 # Create a scatter plot
 fig = go.Figure()
 # fig.add_trace(go.Scatter(x=selling_prices, y=cgtax_with_indexation, mode='lines+markers', name='CapitalGain Tax With Indexation', line=dict(color='blue')))
