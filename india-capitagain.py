@@ -70,10 +70,10 @@ def determine_text_position(x_value):
     else:
         return "middle right"
 
+# Function to split data at zero crossings
 def split_data_by_zero(x, y):
     segments = []
     current_segment = {'x': [], 'y': [], 'above': y[0] >= 0}
-    
     for xi, yi in zip(x, y):
         if (yi >= 0) == current_segment['above']:
             current_segment['x'].append(xi)
@@ -81,7 +81,6 @@ def split_data_by_zero(x, y):
         else:
             segments.append(current_segment)
             current_segment = {'x': [xi], 'y': [yi], 'above': yi >= 0}
-    
     segments.append(current_segment)
     return segments
 
@@ -176,11 +175,15 @@ fig.add_trace(go.Scatter(
 #     textfont=dict(size=16, color='green', family='Arial, bold')
 # ))
 
-## Iterate over each segment
+# Iterate over each segment to handle plotting
 for segment in split_data_by_zero(selling_prices, tax_gains_with_indexation):
     color = 'green' if segment['above'] else 'red'
-    # Ensure text is added only at significant points
-    text = [f"{y:.1f} L" if (i == 0 or i == len(segment['y']) - 1) and not (i == 0 and len(segment['y']) == 1) else "" for i, y in enumerate(segment['y'])]
+    # Add text only to the first and last points of the entire dataset
+    text = ["" for _ in segment['y']]  # Initialize text for all points as empty
+    if segment == segments[0]:  # First segment
+        text[0] = f"{segment['y'][0]:.1f} L"  # Add text to the first point
+    if segment == segments[-1]:  # Last segment
+        text[-1] = f"{segment['y'][-1]:.1f} L"  # Add text to the last point
 
     fig.add_trace(go.Scatter(
         x=segment['x'],
@@ -192,6 +195,7 @@ for segment in split_data_by_zero(selling_prices, tax_gains_with_indexation):
         textposition="top center",
         textfont=dict(size=16, color=color, family='Arial, bold')
     ))
+
 
 # Add a vertical line at the intersection point
 fig.add_vline(x=intersection_selling_price, line_width=2, line_dash="dash", line_color="black")
