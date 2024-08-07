@@ -86,3 +86,7 @@ purchase_price = st.sidebar.number_input('Enter Purchase Price in Rs Lakhs:',
 # Display the entered purchase price
 st.write(f'Purchase Price: Rs {purchase_price} Lakhs')
 
+idx = df[df["Property Purchase FY"] == selected_year].index
+
+st.write(idx)
+
