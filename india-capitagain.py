@@ -77,7 +77,7 @@ selected_year = st.sidebar.selectbox('Select a Year of Purchase:', years)
 st.write(f'You selected: {selected_year}')
 
 # Create a numeric input for purchase price
-purchase_price = st.number_input('Enter Purchase Price in Rs Lakhs:', 
+purchase_price = st.sidebar.number_input('Enter Purchase Price in Rs Lakhs:', 
                                  min_value=0.0, 
                                  value=0.0, 
                                  step=1.0, 
