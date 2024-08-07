@@ -97,9 +97,6 @@ selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:',
                                  format="%.2f")
 
 
-# Display the entered purchase price
-st.write(f'Selling Price: Rs {selling_price} Lakhs')
-
 # Generate range of selling prices from the purchase price to the selected selling price
 selling_prices = np.arange(purchase_price, selling_price + 1, 1.0)
 
