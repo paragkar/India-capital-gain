@@ -87,26 +87,23 @@ cost_index = df[df["Property Purchase FY"] == selected_year]["Applicable Cost In
 
 indexed_puchased_cost = round(purchase_price * cost_index,2)
 
-# Create a numeric input for purchase price
-selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:', 
-                                 min_value=purchase_price, 
-                                 value=purchase_price, 
+# Create a numeric input for selling price increment steps
+selling_price_increment_steps = st.sidebar.number_input('Enter Selling Price Increments Steps in Rs Lakhs:', 
+                                 min_value=1, 
+                                 value=1, 
                                  step=1.0, 
                                  format="%.2f")
 
+#Create a numeric input for selling price
+selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:', 
+                                 min_value=purchase_price, 
+                                 value=purchase_price, 
+                                 step=selling_price_increment_steps, 
+                                 format="%.2f")
+
+
 # Display the entered purchase price
 st.write(f'Selling Price: Rs {selling_price} Lakhs')
-
-# st.write(f'Selling Price: Rs {selling_price} Lakhs')
-
-# profit_with_indexation = round(selling_price - indexed_puchased_cost,2)
-
-# profit_without_indexation = round(selling_price - purchase_price,2)
-
-# st.write(f'Tax Payable with Indextion: Rs {round(profit_with_indexation*0.2,2)} Lakhs')
-
-# st.write(f'Tax Payable without Indextion: Rs {round(profit_without_indexation*0.125,2)} Lakhs')
-
 
 # Generate range of selling prices from the purchase price to the selected selling price
 selling_prices = np.arange(purchase_price, selling_price + 1, 1.0)
