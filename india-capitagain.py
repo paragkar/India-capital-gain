@@ -211,18 +211,18 @@ title_placeholder.markdown(f"<h1>{title_text}</h1>", unsafe_allow_html=True)
 
 # Update layout for the plot, including custom legend positioning
 fig.update_layout(
-    title={
-        'text': title_text,
-        'y': 1.0,
-        'x': 0.5,
-        'xanchor': 'center',
-        'yanchor': 'top',
-        'font': dict(
-            family="Arial",
-            size=20,  # Double the default size which is generally around 20
-            color="black"
-        )
-    },
+    # title={
+    #     'text': title_text,
+    #     'y': 1.0,
+    #     'x': 0.5,
+    #     'xanchor': 'center',
+    #     'yanchor': 'top',
+    #     'font': dict(
+    #         family="Arial",
+    #         size=20,  # Double the default size which is generally around 20
+    #         color="black"
+    #     )
+    # },
     xaxis_title='Selling Price (Rs Lakhs)',
     yaxis_title='Capital Gain Tax (Rs Lakhs)',
     legend_title='Profit Type',
@@ -234,7 +234,7 @@ fig.update_layout(
         xanchor='center',
         yanchor='bottom'
     ),
-    height=700, width=1200, margin=dict(l=0, r=0, t=50, b=0, pad=0)
+    height=700, width=1200, margin=dict(l=0, r=0, t=10, b=0, pad=0)
 )
 
  #Update the layout for the combined figure for 1
