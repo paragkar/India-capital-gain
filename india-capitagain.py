@@ -23,7 +23,7 @@ st.markdown("""
 	/* Adjust the position of the markdown text container */
 	.reportview-container .markdown-text-container {
 		position: relative;
-		top: -20px;  /* Adjust this value to move the title up */
+		top: -30px;  /* Adjust this value to move the title up */
 	}
 	/* Adjust header styling to remove space and lines */
 	h1 {
