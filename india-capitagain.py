@@ -23,11 +23,11 @@ st.markdown("""
 	/* Adjust the position of the markdown text container */
 	.reportview-container .markdown-text-container {
 		position: relative;
-		top: 10px;  /* Adjust this value to move the title up */
+		top: -20px;  /* Adjust this value to move the title up */
 	}
 	/* Adjust header styling to remove space and lines */
 	h1 {
-		margin-top: 0px !important;  /* Decrease the space above the title */
+		margin-top: -50px !important;  /* Decrease the space above the title */
 		border-bottom: none !important;  /* Ensures no line is under the title */
 	}
 	/* Hide any horizontal rules that might be appearing */
@@ -219,6 +219,6 @@ fig.update_yaxes(tickfont=dict(size=15),fixedrange=True, showline=True, linewidt
 
 
 # Display the plot
-st.plotly_chart(fig)
+st.plotly_chart(fig, use_container_width=True)
 
 
