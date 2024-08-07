@@ -126,9 +126,12 @@ fig.add_vline(x=intersection_selling_price, line_width=2, line_dash="dash", line
 fig.add_hline(y=0.0, line_width=2, line_dash="dash", line_color="black")
 
 
+title = f"Capital Gain Tax For Property (Indexation vs Non Indexation) <span style='color:blue;'>{fy}</span> - <span style='color:red;'>{formatted_date}</span>"
+
+
 # Update layout for the plot, including custom legend positioning
 fig.update_layout(
-    title='Capital Gain Tax Analysis',
+    title=title,
     xaxis_title='Selling Price (Rs Lakhs)',
     yaxis_title='Capital Gain Tax (Rs Lakhs)',
     legend_title='Profit Type',
