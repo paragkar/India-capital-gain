@@ -109,21 +109,21 @@ selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:',
 selling_prices = np.arange(purchase_price, selling_price + 1, 1.0)
 
 # Calculate profits with and without indexation for each selling price
-profits_with_indexation = (selling_prices - indexed_puchased_cost)*0.2
-profits_without_indexation = (selling_prices - purchase_price)*0.125
+cgtax_with_indexation = (selling_prices - indexed_puchased_cost)*0.2
+cgtax_without_indexation = (selling_prices - purchase_price)*0.125
 
 # Create a scatter plot
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=selling_prices, y=profits_with_indexation, mode='lines+markers', name='Profit with Indexation', line=dict(color='blue')))
-fig.add_trace(go.Scatter(x=selling_prices, y=profits_without_indexation, mode='lines+markers', name='Profit without Indexation', line=dict(color='red')))
+fig.add_trace(go.Scatter(x=selling_prices, y=cgtax_with_indexation, mode='lines+markers', name='CapitalGain Tax With Indexation', line=dict(color='blue')))
+fig.add_trace(go.Scatter(x=selling_prices, y=cgtax_without_indexation, mode='lines+markers', name='CapitalGain Tax Without Indexation', line=dict(color='red')))
 
 # Set plot layout
-fig.update_layout(title='Profit Analysis', xaxis_title='Selling Price (Rs Lakhs)', yaxis_title='Profit (Rs Lakhs)', legend_title='Profit Type')
+fig.update_layout(title='Capital Gain Tax Analysis', xaxis_title='Selling Price (Rs Lakhs)', yaxis_title='Capital Gain Tax (Rs Lakhs)', legend_title='Profit Type')
 
 # Display the plot
 st.plotly_chart(fig)
 
 # Display taxes payable
-st.write(f'Tax Payable with Indexation: Rs {round(profits_with_indexation[-1]*0.2,2)} Lakhs')
-st.write(f'Tax Payable without Indexation: Rs {round(profits_without_indexation[-1]*0.125,2)} Lakhs')
+st.write(f'Tax Payable with Indexation: Rs {round(cgtax_with_indexation[-1],2)} Lakhs')
+st.write(f'Tax Payable without Indexation: Rs {round(cgtax_without_indexation[-1],2)} Lakhs')
 
