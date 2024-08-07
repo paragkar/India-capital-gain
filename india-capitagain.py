@@ -106,7 +106,7 @@ cgtax_without_indexation = (selling_prices - purchase_price)*0.125
 
 #Difference between cgtax_with_indexation & cgtax_without_indexation
 
-tax_gains_with_indexation = cgtax_with_indexation - cgtax_without_indexation
+tax_gains_with_indexation = cgtax_without_indexation - cgtax_with_indexation
 
 # Create a scatter plot
 fig = go.Figure()
