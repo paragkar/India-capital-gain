@@ -148,7 +148,7 @@ fig.update_layout(
 )
 
  #Update the layout for the combined figure for 1
-fig.update_xaxes(fixedrange=True, showline=True, linewidth=1.5, linecolor='grey', mirror=True, showgrid=True, gridcolor='lightgrey')
+fig.update_xaxes(tickfont=dict(size=15), fixedrange=True, showline=True, linewidth=1.5, linecolor='grey', mirror=True, showgrid=True, gridcolor='lightgrey')
 fig.update_yaxes(tickfont=dict(size=15),fixedrange=True, showline=True, linewidth=1.5, linecolor='grey', mirror=True, showgrid=True, gridcolor='lightgrey')
 
 
