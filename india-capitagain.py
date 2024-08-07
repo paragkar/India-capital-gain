@@ -60,7 +60,19 @@ def loadcgmap():
 	df = pd.read_excel("cgmap.xlsx", sheet_name="Sheet1")
 	return df
 
+
+
+
 df = loadcgmap()
 
 st.write(df)
+
+# Get unique years from the 'Property Purchase FY' column
+years = df['Property Purchase FY'].unique()
+
+# Create a dropdown menu
+selected_year = st.selectbox('Select a Year of Purchase:', years)
+
+# Display the selected year (you can replace this with other functionality based on the selection)
+st.write(f'You selected: {selected_year}')
 
