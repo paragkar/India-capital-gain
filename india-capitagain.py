@@ -73,7 +73,7 @@ selected_year = st.sidebar.selectbox('Select a Year of Purchase:', years)
 # Create a numeric input for purchase price
 purchase_price = st.sidebar.number_input('Enter Purchase Price in Rs Lakhs:', 
                                  min_value=0.0, 
-                                 value=0.0, 
+                                 value=50, 
                                  step=1.0, 
                                  format="%.2f")
 
@@ -92,7 +92,7 @@ selling_price_increment_steps = st.sidebar.number_input('Enter Selling Price Inc
 #Create a numeric input for selling price
 selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:', 
                                  min_value=purchase_price, 
-                                 value=purchase_price, 
+                                 value=purchase_price*1.1, 
                                  step=selling_price_increment_steps, 
                                  format="%.2f")
 
