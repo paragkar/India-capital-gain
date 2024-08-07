@@ -89,8 +89,8 @@ indexed_puchased_cost = round(purchase_price * cost_index,2)
 
 # Create a numeric input for selling price increment steps
 selling_price_increment_steps = st.sidebar.number_input('Enter Selling Price Increments Steps in Rs Lakhs:', 
-                                 min_value=1, 
-                                 value=1, 
+                                 min_value=1.0, 
+                                 value=1.0, 
                                  step=1.0, 
                                  format="%.2f")
 
