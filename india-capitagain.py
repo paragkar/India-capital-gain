@@ -62,7 +62,7 @@ def loadcgmap():
 
 
 # Function to determine text position
-ddef split_data_by_zero(x, y):
+def split_data_by_zero(x, y):
     segments = []
     current_segment = {'x': [], 'y': [], 'above': y[0] >= 0}
     
