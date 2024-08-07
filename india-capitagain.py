@@ -90,8 +90,17 @@ idx = df[df["Property Purchase FY"] == selected_year].index
 
 cost_index = df.loc[idx, "Applicable Cost Index"]
 
-
 indexed_puchased_cost = round(purchase_price * cost_index,2)
 
-st.write(indexed_puchased_cost)
+
+# Create a numeric input for purchase price
+selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:', 
+                                 min_value=purchase_price, 
+                                 value=0.0, 
+                                 step=1.0, 
+                                 format="%.2f")
+
+profit_with_indexation = round(selling_price - indexed_puchased_cost,2)
+
+st.write(profit_with_indexation)
 
