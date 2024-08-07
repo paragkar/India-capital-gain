@@ -27,7 +27,7 @@ st.markdown("""
 	}
 	/* Adjust header styling to remove space and lines */
 	h1 {
-		margin-top: -20px !important;  /* Decrease the space above the title */
+		margin-top: 0px !important;  /* Decrease the space above the title */
 		border-bottom: none !important;  /* Ensures no line is under the title */
 	}
 	/* Hide any horizontal rules that might be appearing */
