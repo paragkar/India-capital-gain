@@ -98,6 +98,8 @@ selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:',
                                  step=1.0, 
                                  format="%.2f")
 
+st.write(f'Index Purchase Cost: Rs {indexed_puchased_cost} Lakhs')
+
 profit_with_indexation = round(selling_price - indexed_puchased_cost,2)
 
 st.write(f'Profit with Indexation: Rs {profit_with_indexation} Lakhs')
