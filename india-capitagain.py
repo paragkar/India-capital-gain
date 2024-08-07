@@ -123,19 +123,22 @@ fig.add_trace(go.Scatter(
     x=selling_prices, y=cgtax_with_indexation, mode='lines+markers+text', name='Capital Gain Tax With Indexation',
     line=dict(color='blue'),
     text=[f"{y:.1f} L" if x in [selling_prices[0], selling_prices[-1], intersection_selling_price] else "" for x, y in zip(selling_prices, cgtax_with_indexation)],
-    textposition=["top center" if x == intersection_selling_price else "bottom center" for x in selling_prices]
+    textposition=["top center" if x == intersection_selling_price else "bottom center" for x in selling_prices],
+    textfont=dict(size=20, color='blue', family='Arial, bold')  # Bold and double size
 ))
 fig.add_trace(go.Scatter(
     x=selling_prices, y=cgtax_without_indexation, mode='lines+markers+text', name='Capital Gain Tax Without Indexation',
     line=dict(color='red'),
     text=[f"{y:.1f} L" if x in [selling_prices[0], selling_prices[-1], intersection_selling_price] else "" for x, y in zip(selling_prices, cgtax_without_indexation)],
-    textposition=["top center" if x == intersection_selling_price else "bottom center" for x in selling_prices]
+    textposition=["top center" if x == intersection_selling_price else "bottom center" for x in selling_prices],
+    textfont=dict(size=20, color='blue', family='Arial, bold')  # Bold and double size
 ))
 fig.add_trace(go.Scatter(
     x=selling_prices, y=tax_gains_with_indexation, mode='lines+markers+text', name='Savings With Indexation',
     line=dict(color='green'),
     text=[f"{y:.1f} L" if x in [selling_prices[0], selling_prices[-1], intersection_selling_price] else "" for x, y in zip(selling_prices, tax_gains_with_indexation)],
-    textposition="bottom center"
+    textposition="bottom center",
+    textfont=dict(size=20, color='blue', family='Arial, bold')  # Bold and double size
 ))
 
 
