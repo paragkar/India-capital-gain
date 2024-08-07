@@ -126,6 +126,19 @@ fig.add_vline(x=intersection_selling_price, line_width=2, line_dash="dash", line
 fig.add_hline(y=0.0, line_width=2, line_dash="dash", line_color="black")
 
 
+# Add annotations
+annotations = [
+    # Start and end annotations for 'With Indexation'
+    dict(x=selling_prices[0], y=cgtax_with_indexation[0], xanchor='left', yanchor='bottom', text='Start', showarrow=True, arrowhead=1, ax=-40, ay=0),
+    dict(x=selling_prices[-1], y=cgtax_with_indexation[-1], xanchor='right', yanchor='top', text='End', showarrow=True, arrowhead=1, ax=40, ay=0),
+    # Start and end annotations for 'Without Indexation'
+    dict(x=selling_prices[0], y=cgtax_without_indexation[0], xanchor='left', yanchor='bottom', text='Start', showarrow=True, arrowhead=1, ax=-40, ay=0),
+    dict(x=selling_prices[-1], y=cgtax_without_indexation[-1], xanchor='right', yanchor='top', text='End', showarrow=True, arrowhead=1, ax=40, ay=0),
+    # Intersection annotation
+    dict(x=intersection_selling_price, y=cgtax_with_indexation[intersection_idx], xanchor='center', yanchor='middle', text='Intersection', showarrow=True, arrowhead=1, ax=0, ay=-40),
+]
+
+
 title = f"Capital Gain Tax For Property (Indexation vs NonIndexation)<span style='color:blue;'> - Purchase Year {selected_year}\
 </span> - Purchase Price <span style='color:red;'> Rs {purchase_price} Lakhs</span>\
 </span> - Selling Price <span style='color:red;'> Rs {selling_price} Lakhs</span>"
@@ -137,6 +150,7 @@ fig.update_layout(
     xaxis_title='Selling Price (Rs Lakhs)',
     yaxis_title='Capital Gain Tax (Rs Lakhs)',
     legend_title='Profit Type',
+    annotations=annotations,
     legend=dict(
         orientation="h",
         x=0.5,
