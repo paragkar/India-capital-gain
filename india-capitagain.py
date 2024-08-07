@@ -70,6 +70,32 @@ def determine_text_position(x_value):
     else:
         return "middle right"
 
+def split_data_by_zero(x, y):
+    pos_x, pos_y, neg_x, neg_y = [], [], [], []
+    prev_positive = y[0] >= 0
+    
+    for i, (xi, yi) in enumerate(zip(x, y)):
+        if yi >= 0:
+            if not prev_positive and pos_x:
+                yield neg_x, neg_y, 'below'
+                neg_x, neg_y = [], []
+            pos_x.append(xi)
+            pos_y.append(yi)
+            prev_positive = True
+        else:
+            if prev_positive and neg_x:
+                yield pos_x, pos_y, 'above'
+                pos_x, pos_y = [], []
+            neg_x.append(xi)
+            neg_y.append(yi)
+            prev_positive = False
+    
+    if pos_x:
+        yield pos_x, pos_y, 'above'
+    if neg_x:
+        yield neg_x, neg_y, 'below'
+
+
 
 title_placeholder = st.empty()
 # slider_placeholder = st.sidebar.empty()
@@ -152,13 +178,23 @@ fig.add_trace(go.Scatter(
     textposition=[determine_text_position(x) for x in selling_prices],
     textfont=dict(size=16, color='brown', family='Arial, bold')
 ))
-fig.add_trace(go.Scatter(
-    x=selling_prices, y=tax_gains_with_indexation, mode='lines+markers+text', name='Savings With Indexation',
-    line=dict(color='green'),
-    text=[f"{y:.1f} L" if x in [selling_prices[0], selling_prices[-1], intersection_selling_price] else "" for x, y in zip(selling_prices, tax_gains_with_indexation)],
-    textposition=[determine_text_position(x) for x in selling_prices],
-    textfont=dict(size=16, color='green', family='Arial, bold')
-))
+# fig.add_trace(go.Scatter(
+#     x=selling_prices, y=tax_gains_with_indexation, mode='lines+markers+text', name='Savings With Indexation',
+#     line=dict(color='green'),
+#     text=[f"{y:.1f} L" if x in [selling_prices[0], selling_prices[-1], intersection_selling_price] else "" for x, y in zip(selling_prices, tax_gains_with_indexation)],
+#     textposition=[determine_text_position(x) for x in selling_prices],
+#     textfont=dict(size=16, color='green', family='Arial, bold')
+# ))
+
+# Loop through segments of data and plot
+for x_segment, y_segment, position in split_data_by_zero(selling_prices, tax_gains_with_indexation):
+    color = 'green' if position == 'above' else 'red'
+    fig.add_trace(go.Scatter(
+        x=x_segment, y=y_segment, mode='lines+markers', name='Savings With Indexation',
+        line=dict(color=color),
+        text=[f"{y:.1f} L" for y in y_segment],
+        textposition="top center"
+    ))
 
 
 
