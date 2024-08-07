@@ -189,7 +189,7 @@ title_text = f"Capital Gain Tax Analysis for Property (Indexation vs Non-Indexat
 fig.update_layout(
     title={
         'text': title_text,
-        'y': 0.95,
+        'y': 1.2,
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top',
