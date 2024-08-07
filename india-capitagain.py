@@ -196,7 +196,7 @@ fig.update_layout(
         xanchor='center',
         yanchor='bottom'
     ),
-    height=700, width=1200, margin=dict(l=0, r=20, t=30, b=0, pad=0)
+    height=700, width=1200, margin=dict(l=0, r=0, t=30, b=0, pad=0)
 )
 
  #Update the layout for the combined figure for 1
