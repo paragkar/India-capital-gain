@@ -88,5 +88,7 @@ st.write(f'Purchase Price: Rs {purchase_price} Lakhs')
 
 idx = df[df["Property Purchase FY"] == selected_year].index
 
-st.write(idx)
+cost_index = df.loc[idx, "Applicable Cost Index"]
+
+st.write(cost_index)
 
