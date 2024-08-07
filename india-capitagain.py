@@ -175,6 +175,10 @@ fig.add_trace(go.Scatter(
 #     textfont=dict(size=16, color='green', family='Arial, bold')
 # ))
 
+
+# Obtain segments from the function
+segments = split_data_by_zero(selling_prices, tax_gains_with_indexation)
+
 # Iterate over each segment to handle plotting
 for segment in split_data_by_zero(selling_prices, tax_gains_with_indexation):
     color = 'green' if segment['above'] else 'red'
