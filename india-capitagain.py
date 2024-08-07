@@ -104,10 +104,14 @@ st.write(f'Index Purchase Cost: Rs {indexed_puchased_cost} Lakhs')
 
 profit_with_indexation = round(selling_price - indexed_puchased_cost,2)
 
+profit_without_indexation = round(selling_price - purchase_price,2)
+
 st.write(f'Profit with Indexation: Rs {profit_with_indexation} Lakhs')
 
 #Tax applicable @ 20% 
 
 
 st.write(f'Tax Payable with Indextion: Rs {round(profit_with_indexation*0.2,2)} Lakhs')
+
+st.write(f'Tax Payable without Indextion: Rs {round(profit_without_indexation*0.125,2)} Lakhs')
 
