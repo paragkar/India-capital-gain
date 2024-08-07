@@ -71,29 +71,19 @@ def determine_text_position(x_value):
         return "middle right"
 
 def split_data_by_zero(x, y):
-    pos_x, pos_y, neg_x, neg_y = [], [], [], []
-    prev_positive = y[0] >= 0
+    segments = []
+    current_segment = {'x': [], 'y': [], 'above': y[0] >= 0}
     
-    for i, (xi, yi) in enumerate(zip(x, y)):
-        if yi >= 0:
-            if not prev_positive and pos_x:
-                yield neg_x, neg_y, 'below'
-                neg_x, neg_y = [], []
-            pos_x.append(xi)
-            pos_y.append(yi)
-            prev_positive = True
+    for xi, yi in zip(x, y):
+        if (yi >= 0) == current_segment['above']:
+            current_segment['x'].append(xi)
+            current_segment['y'].append(yi)
         else:
-            if prev_positive and neg_x:
-                yield pos_x, pos_y, 'above'
-                pos_x, pos_y = [], []
-            neg_x.append(xi)
-            neg_y.append(yi)
-            prev_positive = False
+            segments.append(current_segment)
+            current_segment = {'x': [xi], 'y': [yi], 'above': yi >= 0}
     
-    if pos_x:
-        yield pos_x, pos_y, 'above'
-    if neg_x:
-        yield neg_x, neg_y, 'below'
+    segments.append(current_segment)
+    return segments
 
 
 
@@ -186,16 +176,21 @@ fig.add_trace(go.Scatter(
 #     textfont=dict(size=16, color='green', family='Arial, bold')
 # ))
 
-# Loop through segments of data and plot
-for x_segment, y_segment, position in split_data_by_zero(selling_prices, tax_gains_with_indexation):
-    color = 'green' if position == 'above' else 'red'
+# Plotting each segment with text annotations
+for segment in split_data_by_zero(selling_prices, tax_gains_with_indexation):
+    color = 'green' if segment['above'] else 'red'
+    # Determine points for text annotations
+    text = [f"{y:.1f} L" if i in [0, len(segment['y']) - 1] else "" for i, y in enumerate(segment['y'])]  # Text only at the start and end of each segment
+    
     fig.add_trace(go.Scatter(
-        x=x_segment, y=y_segment, mode='lines+markers', name='Savings With Indexation',
+        x=segment['x'],
+        y=segment['y'],
+        mode='lines+markers+text',
+        name='Savings With Indexation',
         line=dict(color=color),
-        text=[f"{y:.1f} L" for y in y_segment],
+        text=text,  # Apply text array here
         textposition="top center"
     ))
-
 
 
 # Add a vertical line at the intersection point
