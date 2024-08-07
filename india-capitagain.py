@@ -181,13 +181,13 @@ fig.add_hline(y=0.0, line_width=2, line_dash="dash", line_color="black")
 # ]
 
 
-# title = f"Capital Gain Tax For Property (Indexation vs NonIndexation)<span style='color:blue;'> - Purchase Year {selected_year}\
-# </span> - Purchase Price <span style='color:red;'> Rs {purchase_price} Lakhs</span>\
-# </span> - Selling Price <span style='color:red;'> Rs {selling_price} Lakhs</span>"
+title = f"Capital Gain Tax For Property (Indexation vs NonIndexation)<span style='color:blue;'> - Purchase Year {selected_year}\
+</span> - Purchase Price <span style='color:red;'> Rs {purchase_price} Lakhs</span>\
+</span> - Selling Price <span style='color:red;'> Rs {selling_price} Lakhs</span>"
 
 
-# Title with HTML for automatic line breaks
-title_text = f"Capital Gain Tax Analysis for Property (Indexation vs Non-Indexation) <br>Purchase Year: {selected_year}, Purchase Price: Rs {purchase_price} Lakhs, Selling Price: Rs {selling_price} Lakhs"
+# # Title with HTML for automatic line breaks
+# title_text = f"Capital Gain Tax Analysis for Property (Indexation vs Non-Indexation) <br>Purchase Year: {selected_year}, Purchase Price: Rs {purchase_price} Lakhs, Selling Price: Rs {selling_price} Lakhs"
 
 
 # Use additional CSS to ensure the title is positioned correctly and reduced in size
@@ -205,7 +205,7 @@ title_css = """
 
 # Display the title with custom styling
 st.markdown(title_css, unsafe_allow_html=True)
-title_placeholder.markdown(f"<h1>{title_text}</h1>", unsafe_allow_html=True)
+title_placeholder.markdown(f"<h1>{title}</h1>", unsafe_allow_html=True)
 
 
 
