@@ -90,5 +90,8 @@ idx = df[df["Property Purchase FY"] == selected_year].index
 
 cost_index = df.loc[idx, "Applicable Cost Index"]
 
-st.write(cost_index)
+
+indexed_puchased_cost = purchase_price * cost_index
+
+st.write(indexed_puchased_cost)
 
