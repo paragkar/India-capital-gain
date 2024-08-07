@@ -126,10 +126,22 @@ fig.add_vline(x=intersection_selling_price, line_width=2, line_dash="dash", line
 fig.add_hline(y=0.0, line_width=2, line_dash="dash", line_color="black")
 
 
-# Set plot layout
-fig.update_layout(title='Capital Gain Tax Analysis', xaxis_title='Selling Price (Rs Lakhs)', yaxis_title='Capital Gain Tax (Rs Lakhs)', legend_title='Profit Type')
+# Update layout for the plot, including custom legend positioning
+fig.update_layout(
+    title='Capital Gain Tax Analysis',
+    xaxis_title='Selling Price (Rs Lakhs)',
+    yaxis_title='Capital Gain Tax (Rs Lakhs)',
+    legend_title='Profit Type',
+    legend=dict(
+        orientation="h",
+        x=0.5,
+        y=-0.2,
+        xanchor='center',
+        yanchor='bottom'
+    ),
+    height=700, width=1200, margin=dict(l=0, r=10, t=30, b=0, pad=0)
+)
 
-fig.update_layout(height=700, width=1200, margin=dict(l=0, r=10, t=30, b=0, pad=0))
 
 # Display the plot
 st.plotly_chart(fig)
