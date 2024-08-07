@@ -89,7 +89,7 @@ st.write(f'Purchase Price: Rs {purchase_price} Lakhs')
 # Get the applicable cost index for the selected year
 cost_index = df[df["Property Purchase FY"] == selected_year]["Applicable Cost Index"].iloc[0].round(2)
 
-st.write(f'Cost Index: {cost_index}')
+# st.write(f'Cost Index: {cost_index}')
 
 indexed_puchased_cost = round(purchase_price * cost_index,2)
 
@@ -100,16 +100,15 @@ selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:',
                                  step=1.0, 
                                  format="%.2f")
 
-st.write(f'Index Purchase Cost: Rs {indexed_puchased_cost} Lakhs')
+st.write(f'Selling Price: Rs {selling_price} Lakhs')
+
+# st.write(f'Index Purchase Cost: Rs {indexed_puchased_cost} Lakhs')
 
 profit_with_indexation = round(selling_price - indexed_puchased_cost,2)
 
 profit_without_indexation = round(selling_price - purchase_price,2)
 
-st.write(f'Profit with Indexation: Rs {profit_with_indexation} Lakhs')
-
-#Tax applicable @ 20% 
-
+# st.write(f'Profit with Indexation: Rs {profit_with_indexation} Lakhs')
 
 st.write(f'Tax Payable with Indextion: Rs {round(profit_with_indexation*0.2,2)} Lakhs')
 
