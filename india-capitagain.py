@@ -181,11 +181,22 @@ fig.add_hline(y=0.0, line_width=2, line_dash="dash", line_color="black")
 #     dict(x=intersection_selling_price, y=cgtax_with_indexation[intersection_idx], xanchor='center', yanchor='middle', text='Intersection', showarrow=True, arrowhead=1, ax=0, ay=-40),
 # ]
 
+def color():
+	if tax_gain_with_indexation >0:
+		color = 'green'
+	if tax_gain_with_indexation <0:
+		color = 'red'
+	if tax_gain_with_indexation == 0:
+		color = 'black'
+	return color
+
+#color index for savings
+color = color()
 
 title = f"Capital Gain Tax For Property (Indexation vs NonIndexation)<span style='color:violet;'> - Purchase Year {selected_year}\
 </span> - Purchase Price <span style='color:violet;'> Rs {purchase_price} Lakhs</span>\
 </span> - Selling Price <span style='color:violet;'> Rs {selling_price} Lakhs</span>\
-</span> - Savings with Indexation <span style='color:red;'> Rs {tax_gain_with_indexation} Lakhs</span>"
+</span> - Savings with Indexation <span style='color:color;'> Rs {tax_gain_with_indexation} Lakhs</span>"
 
 
 # # Title with HTML for automatic line breaks
