@@ -122,6 +122,9 @@ fig.add_trace(go.Scatter(x=selling_prices, y=tax_gains_with_indexation, mode='li
 # Add a vertical line at the intersection point
 fig.add_vline(x=intersection_selling_price, line_width=2, line_dash="dash", line_color="black")
 
+# Add a horizontal line at the x axis
+fig.add_vline(y=0.0, line_width=2, line_dash="dash", line_color="black")
+
 
 # Set plot layout
 fig.update_layout(title='Capital Gain Tax Analysis', xaxis_title='Selling Price (Rs Lakhs)', yaxis_title='Capital Gain Tax (Rs Lakhs)', legend_title='Profit Type')
