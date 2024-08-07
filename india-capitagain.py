@@ -62,15 +62,7 @@ def loadcgmap():
 
 
 # Function to determine text position
-def determine_text_position(x_value):
-    if x_value == intersection_selling_price:
-        return "top left"
-    elif x_value < midpoint:
-        return "middle left"
-    else:
-        return "middle right"
-
-def split_data_by_zero(x, y):
+ddef split_data_by_zero(x, y):
     segments = []
     current_segment = {'x': [], 'y': [], 'above': y[0] >= 0}
     
@@ -176,10 +168,11 @@ fig.add_trace(go.Scatter(
 #     textfont=dict(size=16, color='green', family='Arial, bold')
 # ))
 
-# Plotting each segment with appropriate text annotations
+# Plotting each segment with dynamic color change at zero-crossing
 for segment in split_data_by_zero(selling_prices, tax_gains_with_indexation):
     color = 'green' if segment['above'] else 'red'
-    text = [f"{y:.1f} L" if i in [0, len(segment['y']) - 1] else "" for i, y in enumerate(segment['y'])]  # Text only at the start and end of each segment
+    # Adjusted to add text only at the start and end of the full data set
+    text = [f"{y:.1f} L" if (i == 0 or i == len(segment['y']) - 1) and not (i == 0 and len(segment['y']) == 1) else "" for i, y in enumerate(segment['y'])]
 
     fig.add_trace(go.Scatter(
         x=segment['x'],
@@ -189,7 +182,7 @@ for segment in split_data_by_zero(selling_prices, tax_gains_with_indexation):
         line=dict(color=color),
         text=text,
         textposition="top center",
-        textfont=dict(size=16, color=color, family='Arial, bold')  # Ensure font size and color match the line color
+        textfont=dict(size=16, color=color, family='Arial, bold')
     ))
 
 
