@@ -61,11 +61,7 @@ def loadcgmap():
 	return df
 
 
-
-
 df = loadcgmap()
-
-# st.write(df)
 
 # Get unique years from the 'Property Purchase FY' column
 years = df['Property Purchase FY'].unique()
@@ -89,8 +85,6 @@ st.write(f'Purchase Price: Rs {purchase_price} Lakhs')
 # Get the applicable cost index for the selected year
 cost_index = df[df["Property Purchase FY"] == selected_year]["Applicable Cost Index"].iloc[0].round(2)
 
-# st.write(f'Cost Index: {cost_index}')
-
 indexed_puchased_cost = round(purchase_price * cost_index,2)
 
 # Create a numeric input for purchase price
@@ -100,17 +94,36 @@ selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:',
                                  step=1.0, 
                                  format="%.2f")
 
-st.write(f'Selling Price: Rs {selling_price} Lakhs')
+# st.write(f'Selling Price: Rs {selling_price} Lakhs')
 
-# st.write(f'Index Purchase Cost: Rs {indexed_puchased_cost} Lakhs')
+# profit_with_indexation = round(selling_price - indexed_puchased_cost,2)
 
-profit_with_indexation = round(selling_price - indexed_puchased_cost,2)
+# profit_without_indexation = round(selling_price - purchase_price,2)
 
-profit_without_indexation = round(selling_price - purchase_price,2)
+# st.write(f'Tax Payable with Indextion: Rs {round(profit_with_indexation*0.2,2)} Lakhs')
 
-# st.write(f'Profit with Indexation: Rs {profit_with_indexation} Lakhs')
+# st.write(f'Tax Payable without Indextion: Rs {round(profit_without_indexation*0.125,2)} Lakhs')
 
-st.write(f'Tax Payable with Indextion: Rs {round(profit_with_indexation*0.2,2)} Lakhs')
 
-st.write(f'Tax Payable without Indextion: Rs {round(profit_without_indexation*0.125,2)} Lakhs')
+# Generate range of selling prices from the purchase price to the selected selling price
+selling_prices = np.arange(purchase_price, selling_price + 1, 1.0)
+
+# Calculate profits with and without indexation for each selling price
+profits_with_indexation = selling_prices - indexed_purchased_cost
+profits_without_indexation = selling_prices - purchase_price
+
+# Create a scatter plot
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=selling_prices, y=profits_with_indexation, mode='lines+markers', name='Profit with Indexation', line=dict(color='blue')))
+fig.add_trace(go.Scatter(x=selling_prices, y=profits_without_indexation, mode='lines+markers', name='Profit without Indexation', line=dict(color='red')))
+
+# Set plot layout
+fig.update_layout(title='Profit Analysis', xaxis_title='Selling Price (Rs Lakhs)', yaxis_title='Profit (Rs Lakhs)', legend_title='Profit Type')
+
+# Display the plot
+st.plotly_chart(fig)
+
+# Display taxes payable
+st.write(f'Tax Payable with Indexation: Rs {round(profits_with_indexation[-1]*0.2,2)} Lakhs')
+st.write(f'Tax Payable without Indexation: Rs {round(profits_without_indexation[-1]*0.125,2)} Lakhs')
 
