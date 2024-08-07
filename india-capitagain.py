@@ -151,16 +151,16 @@ fig.update_layout(
 # Display the plot
 st.plotly_chart(fig)
 
-# Display the selected year (you can replace this with other functionality based on the selection)
-st.write(f'You selected: {selected_year}')
+# # Display the selected year (you can replace this with other functionality based on the selection)
+# st.write(f'You selected: {selected_year}')
 
-# Display the entered purchase price
-st.write(f'Purchase Price: Rs {purchase_price} Lakhs')
+# # Display the entered purchase price
+# st.write(f'Purchase Price: Rs {purchase_price} Lakhs')
 
-# Display the entered selling price
-st.write(f'Selling Price: Rs {selling_price} Lakhs')
+# # Display the entered selling price
+# st.write(f'Selling Price: Rs {selling_price} Lakhs')
 
-# Display taxes payable
-st.write(f'Tax Payable with Indexation: Rs {round(cgtax_with_indexation[-1],2)} Lakhs')
-st.write(f'Tax Payable without Indexation: Rs {round(cgtax_without_indexation[-1],2)} Lakhs')
+# # Display taxes payable
+# st.write(f'Tax Payable with Indexation: Rs {round(cgtax_with_indexation[-1],2)} Lakhs')
+# st.write(f'Tax Payable without Indexation: Rs {round(cgtax_without_indexation[-1],2)} Lakhs')
 
