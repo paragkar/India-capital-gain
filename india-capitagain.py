@@ -176,10 +176,11 @@ fig.add_trace(go.Scatter(
 #     textfont=dict(size=16, color='green', family='Arial, bold')
 # ))
 
-# Plotting each segment with appropriate text annotations
+## Iterate over each segment
 for segment in split_data_by_zero(selling_prices, tax_gains_with_indexation):
     color = 'green' if segment['above'] else 'red'
-    text = [f"{y:.1f} L" if i in [0, len(segment['y']) - 1] else "" for i, y in enumerate(segment['y'])]  # Text only at the start and end of each segment
+    # Ensure text is added only at significant points
+    text = [f"{y:.1f} L" if (i == 0 or i == len(segment['y']) - 1) and not (i == 0 and len(segment['y']) == 1) else "" for i, y in enumerate(segment['y'])]
 
     fig.add_trace(go.Scatter(
         x=segment['x'],
@@ -189,9 +190,8 @@ for segment in split_data_by_zero(selling_prices, tax_gains_with_indexation):
         line=dict(color=color),
         text=text,
         textposition="top center",
-        textfont=dict(size=16, color=color, family='Arial, bold')  # Ensure font size and color match the line color
+        textfont=dict(size=16, color=color, family='Arial, bold')
     ))
-
 
 # Add a vertical line at the intersection point
 fig.add_vline(x=intersection_selling_price, line_width=2, line_dash="dash", line_color="black")
