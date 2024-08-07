@@ -115,9 +115,29 @@ intersection_selling_price = selling_prices[intersection_idx]
 
 # Create a scatter plot
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=selling_prices, y=cgtax_with_indexation, mode='lines+markers', name='CapitalGain Tax With Indexation', line=dict(color='blue')))
-fig.add_trace(go.Scatter(x=selling_prices, y=cgtax_without_indexation, mode='lines+markers', name='CapitalGain Tax Without Indexation', line=dict(color='red')))
-fig.add_trace(go.Scatter(x=selling_prices, y=tax_gains_with_indexation, mode='lines+markers', name='Savings With Indexation', line=dict(color='green')))
+# fig.add_trace(go.Scatter(x=selling_prices, y=cgtax_with_indexation, mode='lines+markers', name='CapitalGain Tax With Indexation', line=dict(color='blue')))
+# fig.add_trace(go.Scatter(x=selling_prices, y=cgtax_without_indexation, mode='lines+markers', name='CapitalGain Tax Without Indexation', line=dict(color='red')))
+# fig.add_trace(go.Scatter(x=selling_prices, y=tax_gains_with_indexation, mode='lines+markers', name='Savings With Indexation', line=dict(color='green')))
+
+fig.add_trace(go.Scatter(
+    x=selling_prices, y=cgtax_with_indexation, mode='lines+markers+text', name='Capital Gain Tax With Indexation',
+    line=dict(color='blue'),
+    text=[f"{y:.2f} L" if x in [selling_prices[0], selling_prices[-1], intersection_selling_price] else "" for x, y in zip(selling_prices, cgtax_with_indexation)],
+    textposition=["top center" if x == intersection_selling_price else "bottom center" for x in selling_prices]
+))
+fig.add_trace(go.Scatter(
+    x=selling_prices, y=cgtax_without_indexation, mode='lines+markers+text', name='Capital Gain Tax Without Indexation',
+    line=dict(color='red'),
+    text=[f"{y:.2f} L" if x in [selling_prices[0], selling_prices[-1], intersection_selling_price] else "" for x, y in zip(selling_prices, cgtax_without_indexation)],
+    textposition=["top center" if x == intersection_selling_price else "bottom center" for x in selling_prices]
+))
+fig.add_trace(go.Scatter(
+    x=selling_prices, y=tax_gains_with_indexation, mode='lines+markers+text', name='Savings With Indexation',
+    line=dict(color='green'),
+    text=[f"{y:.2f} L" if x in [selling_prices[0], selling_prices[-1], intersection_selling_price] else "" for x, y in zip(selling_prices, tax_gains_with_indexation)],
+    textposition="bottom center"
+))
+
 
 # Add a vertical line at the intersection point
 fig.add_vline(x=intersection_selling_price, line_width=2, line_dash="dash", line_color="black")
@@ -126,17 +146,17 @@ fig.add_vline(x=intersection_selling_price, line_width=2, line_dash="dash", line
 fig.add_hline(y=0.0, line_width=2, line_dash="dash", line_color="black")
 
 
-# Add annotations
-annotations = [
-    # Start and end annotations for 'With Indexation'
-    dict(x=selling_prices[0], y=cgtax_with_indexation[0], xanchor='left', yanchor='bottom', text='Start', showarrow=True, arrowhead=1, ax=-40, ay=0),
-    dict(x=selling_prices[-1], y=cgtax_with_indexation[-1], xanchor='right', yanchor='top', text='End', showarrow=True, arrowhead=1, ax=40, ay=0),
-    # Start and end annotations for 'Without Indexation'
-    dict(x=selling_prices[0], y=cgtax_without_indexation[0], xanchor='left', yanchor='bottom', text='Start', showarrow=True, arrowhead=1, ax=-40, ay=0),
-    dict(x=selling_prices[-1], y=cgtax_without_indexation[-1], xanchor='right', yanchor='top', text='End', showarrow=True, arrowhead=1, ax=40, ay=0),
-    # Intersection annotation
-    dict(x=intersection_selling_price, y=cgtax_with_indexation[intersection_idx], xanchor='center', yanchor='middle', text='Intersection', showarrow=True, arrowhead=1, ax=0, ay=-40),
-]
+# # Add annotations
+# annotations = [
+#     # Start and end annotations for 'With Indexation'
+#     dict(x=selling_prices[0], y=cgtax_with_indexation[0], xanchor='left', yanchor='bottom', text='Start', showarrow=True, arrowhead=1, ax=-40, ay=0),
+#     dict(x=selling_prices[-1], y=cgtax_with_indexation[-1], xanchor='right', yanchor='top', text='End', showarrow=True, arrowhead=1, ax=40, ay=0),
+#     # Start and end annotations for 'Without Indexation'
+#     dict(x=selling_prices[0], y=cgtax_without_indexation[0], xanchor='left', yanchor='bottom', text='Start', showarrow=True, arrowhead=1, ax=-40, ay=0),
+#     dict(x=selling_prices[-1], y=cgtax_without_indexation[-1], xanchor='right', yanchor='top', text='End', showarrow=True, arrowhead=1, ax=40, ay=0),
+#     # Intersection annotation
+#     dict(x=intersection_selling_price, y=cgtax_with_indexation[intersection_idx], xanchor='center', yanchor='middle', text='Intersection', showarrow=True, arrowhead=1, ax=0, ay=-40),
+# ]
 
 
 title = f"Capital Gain Tax For Property (Indexation vs NonIndexation)<span style='color:blue;'> - Purchase Year {selected_year}\
@@ -150,7 +170,7 @@ fig.update_layout(
     xaxis_title='Selling Price (Rs Lakhs)',
     yaxis_title='Capital Gain Tax (Rs Lakhs)',
     legend_title='Profit Type',
-    annotations=annotations,
+    # annotations=annotations,
     legend=dict(
         orientation="h",
         x=0.5,
