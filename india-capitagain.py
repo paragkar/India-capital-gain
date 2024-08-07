@@ -117,7 +117,7 @@ fig.add_trace(go.Scatter(x=selling_prices, y=tax_gains_with_indexation, mode='li
 # Set plot layout
 fig.update_layout(title='Capital Gain Tax Analysis', xaxis_title='Selling Price (Rs Lakhs)', yaxis_title='Capital Gain Tax (Rs Lakhs)', legend_title='Profit Type')
 
-fig.update_layout(height=700, width=1200, margin=dict(l=0, r=10, t=10, b=0, pad=0))
+fig.update_layout(height=700, width=1200, margin=dict(l=0, r=10, t=20, b=0, pad=0))
 
 # Display the plot
 st.plotly_chart(fig)
