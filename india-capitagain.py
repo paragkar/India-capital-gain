@@ -94,6 +94,9 @@ selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:',
                                  step=1.0, 
                                  format="%.2f")
 
+# Display the entered purchase price
+st.write(f'Selling Price: Rs {selling_price} Lakhs')
+
 # st.write(f'Selling Price: Rs {selling_price} Lakhs')
 
 # profit_with_indexation = round(selling_price - indexed_puchased_cost,2)
