@@ -117,7 +117,7 @@ intersection_selling_price = selling_prices[intersection_idx]
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=selling_prices, y=cgtax_with_indexation, mode='lines+markers', name='CapitalGain Tax With Indexation', line=dict(color='blue')))
 fig.add_trace(go.Scatter(x=selling_prices, y=cgtax_without_indexation, mode='lines+markers', name='CapitalGain Tax Without Indexation', line=dict(color='red')))
-fig.add_trace(go.Scatter(x=selling_prices, y=tax_gains_with_indexation, mode='lines+markers', name='CapitalGain Tax Gains With Indexation', line=dict(color='green')))
+fig.add_trace(go.Scatter(x=selling_prices, y=tax_gains_with_indexation, mode='lines+markers', name='Savings With Indexation', line=dict(color='green')))
 
 # Add a vertical line at the intersection point
 fig.add_vline(x=intersection_selling_price, line_width=2, line_dash="dash", line_color="black")
