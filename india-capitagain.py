@@ -126,7 +126,7 @@ fig.add_vline(x=intersection_selling_price, line_width=2, line_dash="dash", line
 fig.add_hline(y=0.0, line_width=2, line_dash="dash", line_color="black")
 
 
-title = f"Capital Gain Tax For Property (Indexation vs Non Indexation) <span style='color:blue;'>{selected_year}</span> - <span style='color:red;'>{selling_price}</span>"
+title = f"Capital Gain Tax For Property (Indexation vs NonIndexation) <span style='color:blue;'> Year of Purchase {selected_year}</span> - <span style='color:red;'>{selling_price}</span>"
 
 
 # Update layout for the plot, including custom legend positioning
