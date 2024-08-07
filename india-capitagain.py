@@ -195,7 +195,7 @@ fig.update_layout(
         'yanchor': 'top',
         'font': dict(
             family="Arial",
-            size=16,  # Double the default size which is generally around 20
+            size=20,  # Double the default size which is generally around 20
             color="black"
         )
     },
