@@ -95,8 +95,8 @@ indexed_puchased_cost = purchase_price * cost_index
 
 # Create a numeric input for purchase price
 selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:', 
-                                 min_value=0.0, 
-                                 value=0.0, 
+                                 min_value=purchase_price, 
+                                 value=purchase_price, 
                                  step=1.0, 
                                  format="%.2f")
 
