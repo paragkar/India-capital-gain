@@ -92,7 +92,7 @@ selling_price_increment_steps = st.sidebar.number_input('Enter Selling Price Inc
 #Create a numeric input for selling price
 selling_price = st.sidebar.number_input('Enter Selling Price in Rs Lakhs:', 
                                  min_value=purchase_price, 
-                                 value=purchase_price*1.1, 
+                                 value=float(purchase_price*1.1), 
                                  step=selling_price_increment_steps, 
                                  format="%.2f")
 
