@@ -190,16 +190,16 @@ title = f"Capital Gain Tax For Property (Indexation vs NonIndexation)<span style
 # title_text = f"Capital Gain Tax Analysis for Property (Indexation vs Non-Indexation) <br>Purchase Year: {selected_year}, Purchase Price: Rs {purchase_price} Lakhs, Selling Price: Rs {selling_price} Lakhs"
 
 
-# Use additional CSS to ensure the title is positioned correctly and reduced in size
+# Custom CSS for adjusting title appearance
 title_css = """
 <style>
-	h1 {
-		text-align: center; /* Center align the title */
-		margin-top: -20px !important; /* Adjust top margin to reduce gap */
-		margin-bottom: 5px; /* Add a bit of margin below the title if needed */
-		border-bottom: none !important; /* Ensures no line is under the title */
-		font-size: 26px; /* Adjust font size to 80% of the original */
-	}
+    h1 {
+        text-align: left; /* Left align the title */
+        margin-top: 0px; /* Adjust top margin to reduce gap */
+        margin-bottom: 5px; /* Add a bit of margin below the title if needed */
+        border-bottom: none !important; /* Ensures no line is under the title */
+        font-size: 20px; /* Adjust font size to smaller size */
+    }
 </style>
 """
 
