@@ -71,7 +71,7 @@ st.write(df)
 years = df['Property Purchase FY'].unique()
 
 # Create a dropdown menu
-selected_year = st.selectbox('Select a Year of Purchase:', years)
+selected_year = st.sidebar.selectbox('Select a Year of Purchase:', years)
 
 # Display the selected year (you can replace this with other functionality based on the selection)
 st.write(f'You selected: {selected_year}')
